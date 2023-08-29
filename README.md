@@ -29,3 +29,8 @@ Feature: High Level Description
 <br>Given [Pre-Condition]
 <br>When [Some event]
 <br>Then [Some Outcome]
+<br>And [Additional Steps]
+
+## BDD Steps
+
+## Step Parameters
