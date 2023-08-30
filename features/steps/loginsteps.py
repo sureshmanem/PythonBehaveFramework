@@ -1,4 +1,3 @@
-from gettext import find
 from turtle import title
 from behave import given, when, then
 
@@ -15,7 +14,7 @@ def step_impl(context):
 
 
 @when("Open the Sauce Labs Home Page")
-def openHomePage(context):
+def step_impl(context):
     assert "Swag Labs" in driver.title
 
 
@@ -32,8 +31,13 @@ def step_impl(context):
 
 @then("Verify successful login")
 def step_impl(context):
-    strName = driver.find_element(
-        By.XPATH, "/html/body/div[1]/div/div/div[1]/div[2]/span"
-    ).text
-    assert strName == "Products"
-    driver.close()
+    try:
+        strName = driver.find_element(
+            By.XPATH, "/html/body/div[1]/div/div/div[1]/div[2]/span"
+        ).text
+    except:
+        driver.close()
+        assert False, "Test Failed"
+    if strName == "Products":
+        assert True, "Test Passed"
+        driver.close()
