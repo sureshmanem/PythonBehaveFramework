@@ -1,67 +1,12 @@
-| uname                   | pword        |
-            | standard_user           | secret_sauce |
-            | locked_out_user         | secret_sauce |
-            | problem_user            | secret_sauce |
-            | performance_glitch_user | secret_sauce |
+ pip3 install selenium
+ pip3 install behave
+
+behave
+behave ./features
+behave /features/<specificfile.feature>
+behave --no-capture -f plain
 
 
-             Scenario: Login to Sauce Labs with Valid Parameters
-        Given Launch Chrome Browser
-        When Open the Sauce Labs Home Page
-        And Enter username as "standard_user" and password as "secret_sauce"
-        And Click on Login button
-        Then Verify successful login
-
-
-
-        from turtle import title
-from behave import given, when, then
-
-# from behave import *
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-import time
-
-driver = webdriver.Chrome()
-
-
-@given("Launch Chrome Browser")
-def step_impl(context):
-    # time.sleep(5)
-    driver.maximize_window()
-    driver.get("https://www.saucedemo.com/")
-
-
-@when("Open the Sauce Labs Home Page")
-def step_impl(context):
-    assert "Swag Labs" in driver.title
-
-
-@when('Enter username as "{uname}" and password as "{pwd}"')
-def step_impl(context, uname, pwd):
-    driver.find_element(By.ID, "user-name").send_keys(uname)
-    driver.find_element(By.ID, "password").send_keys(pwd)
-
-
-@when("Click on Login button")
-def step_impl(context):
-    driver.find_element(By.ID, "login-button").click()
-
-
-@then("Verify successful login")
-def step_impl(context):
-    try:
-        strName = driver.find_element(
-            By.XPATH, "/html/body/div[1]/div/div/div[1]/div[2]/span"
-        ).text
-    except:
-        print(driver.session_id)
-        assert False, "Test Failed"
-    if strName == "Products":
-        print(driver.session_id)
-        assert True, "Test Passed"
-
-
-@then("Close Browser")
-def closeBrowser(context):
-    driver.close()
+ brew install allure (if allure is not available in mac)
+ Generate Report: behave -f allure_behave.formatter:AllureFormatter -o reports/ features
+ Generate Report: allure serve reports/
