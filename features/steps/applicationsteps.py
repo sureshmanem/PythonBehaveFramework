@@ -45,3 +45,13 @@ def step_impl(context):
 @then("Close Browser")
 def step_impl(context):
     context.driver.close()
+
+
+@then("Click on Add To Cart")
+def step_impl(context):
+    context.driver.find_element(By.ID, "add-to-cart-sauce-labs-backpack").click()
+
+
+@then("Click on Remove")
+def step_impl(context):
+    context.driver.find_element(By.ID, "remove-sauce-labs-backpack").click()
