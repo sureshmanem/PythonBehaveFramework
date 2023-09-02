@@ -1,4 +1,4 @@
-Feature: Sauce Labs Login Scenarios
+Feature: Sauce Labs Login Scenarios using Background
 
     Background: Pre-Requisite Steps
         Given Launch Chrome Browser

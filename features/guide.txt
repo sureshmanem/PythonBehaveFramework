@@ -1,12 +1,15 @@
- pip3 install selenium
- pip3 install behave
+Packages needs to be installed
+pip3 install selenium
+pip3 install behave
 
+
+Execute behave framework
 behave
 behave ./features
 behave /features/<specificfile.feature>
 behave --no-capture -f plain
 
-
+Packages needed for reports
  brew install allure (if allure is not available in mac)
  Generate Report: behave -f allure_behave.formatter:AllureFormatter -o reports/ features
  Generate Report: allure serve reports/
